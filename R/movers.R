@@ -4,7 +4,6 @@
 # 2012 pfi survey data downloaded from nces on 2017-02-13
 # https://nces.ed.gov/nhes/dataproducts.asp
 
-
 # import data/packages ####
 
 # load packages 
@@ -95,7 +94,6 @@ ggplot(race_move %>% filter(move_status != "Skip"),
 
 ggsave("figures/race_move.png", width = 6, height = 4, units = "in")
 
-
 ggplot(race_move %>% filter(move_status == "Moved"),
        aes(x = race, y = grp_pct, fill = race))+
   geom_col(position = "dodge") +
@@ -138,7 +136,7 @@ race_inc_move <- moving_data %>%
   summarise_groups(move_status, race, income) 
 
 ggplot(race_inc_move%>% filter(move_status == "Moved"),
-       aes(x = income, y = total, fill = race))+ 
+       aes(x = income, y = total, fill = race))+  
   geom_col(position = "stack")+
   scale_y_continuous(label = comma)+
   labs(x = "Household income in $", y = "Students", fill = "Race",
@@ -146,7 +144,6 @@ ggplot(race_inc_move%>% filter(move_status == "Moved"),
   theme(axis.text.x = element_text(angle = 90, vjust = .5))
 
 ggsave("figures/race_inc_move.png", width = 6, height = 4, units = "in")
-
 
 ggplot(race_inc_move %>% filter(move_status == "Moved"),
        aes(x = income, y = grp_pct, fill = race))+ 
@@ -172,13 +169,12 @@ ggplot(zip_move %>% filter(move_status == "Moved"),
   labs(x = "Zip code category", y = "Students",
        title = "Mover destinations")
 
-ggsave("figures/zip_move_pct.png", width = 6, height = 4, units = "in")
+ggsave("figures/zip_move.png", width = 6, height = 4, units = "in")
 
 # by race
 
 zip_race_move <- moving_data %>%
   summarise_groups(zip_grp, race, move_status)
-
 
 ggplot(zip_race_move %>% filter(move_status == "Moved"), 
        aes(x = zip_grp, y = total, fill = race))+
@@ -218,7 +214,6 @@ ggplot(race_move_zip %>% filter(move_status == "Moved"),
 
 ggsave("figures/zip_race_move_pct.png", width = 6, height = 6, units = "in")
 
-
 # by income
 
 inc_move_zip<- moving_data %>%
@@ -235,7 +230,6 @@ ggplot(inc_move_zip %>% filter(move_status == "Moved"),
        title = "Mover income by destination type")
 
 ggsave("figures/inc_move_zip.png", width = 6, height = 6, units = "in")
-
 
 ggplot(inc_move_zip %>% filter(move_status == "Moved"),
        aes(x = zip_grp, y = grp_pct, fill = zip_grp))+
