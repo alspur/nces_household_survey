@@ -118,7 +118,6 @@ ggplot(inc_move %>% filter(move_status != "Skip"),
 
 ggsave("figures/inc_move.png", width = 6, height = 4, units = "in")
 
-
 ggplot(inc_move %>% filter(move_status == "Moved"),
        aes(x = income, y = grp_pct))+
   geom_col() +
@@ -128,7 +127,6 @@ ggplot(inc_move %>% filter(move_status == "Moved"),
   theme(axis.text.x = element_text(angle = 90, vjust = .5))
 
 ggsave("figures/inc_move_pct.png", width = 6, height = 4, units = "in")
-
 
 # movers by race & income
 
